@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql;
-using WebApi.Factories;
 using WebApi.Middlewares;
 using WebApi.Models.Context;
 using WebApi.Repositories;
@@ -30,7 +29,6 @@ namespace WebApi
             services.AddControllers();
             services.AddSwaggerGen();
             services.AddScoped(typeof(ICustomerRepository<>), typeof(CustomerRepository<>));
-            services.AddScoped<IConnectionFactory, ConnectionFactory>();
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseNpgsql(connection);
